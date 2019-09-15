@@ -4,6 +4,6 @@ RUN apk update && apk upgrade && apk add \
     curl \
     git \
     mercurial
-RUN mkdir -p \
+RUN mkdir --parents \
     ${HOME}/IslasGECI \
     ${HOME}/repositorios/reproducibility_inspector/data
