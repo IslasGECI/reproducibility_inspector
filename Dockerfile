@@ -3,6 +3,7 @@ RUN apk update && apk upgrade && apk add \
     bash \
     curl \
     git \
+    make \
     mercurial
 RUN mkdir --parents \
     ${HOME}/IslasGECI \
