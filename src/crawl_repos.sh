@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# 'get_report' genera los reportes especificados en analyses.json de cada repo.
+# 'crawl_repos' genera los reportes especificados en analyses.json de cada repo.
 # La lista de repos la lee de 'data/repos.json'.
 
 function get_report {
