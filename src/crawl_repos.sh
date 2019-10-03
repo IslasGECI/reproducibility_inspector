@@ -12,8 +12,8 @@ function get_report {
         if [ ! -z "$REPORTES" ]; then
           while read -r REPORTE; do
             echo " "
-            echo "testMake $REPO reports/$REPORTE $REVISION"
-            /usr/local/bin/testMake $REPO reports/$REPORTE $REVISION
+            echo "geci-testmake $REPO reports/$REPORTE $REVISION"
+            /usr/local/bin/geci-testmake $REPO reports/$REPORTE $REVISION
             echo " "
           done <<< "$REPORTES"
         else
