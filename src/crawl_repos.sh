@@ -6,7 +6,7 @@
 function get_report {
       REVISION="$1"
       rm --force analyses.json
-      hg revert analyses.json -r "$REVISION"
+      git checkout $REVISION analyses.json
       if [ -f analyses.json ]; then
         REPORTES=$(< analyses.json jq --raw-output '.[].report')
         if [ ! -z "$REPORTES" ]; then
@@ -26,24 +26,25 @@ function get_report {
 
 cd ${HOME}/IslasGECI
 pwd
-REPOS=$(< ${HOME}/repositorios/reproducibility_inspector/data/repos.json jq --raw-output '.values[].slug')
+REPOS=$(< ${HOME}/repositorios/reproducibility_inspector/data/repos.json jq --raw-output '.values[] | select(.scm == "git").slug')
 while read -r REPO; do
   if [ -d "${HOME}/IslasGECI/$REPO" ]; then
     cd ${HOME}/IslasGECI/$REPO
     pwd
-    hg pull
+    git fetch
   else
-    hg clone https://bitbucket.com/IslasGECI/$REPO
+    git clone git@bitbucket.org:IslasGECI/${REPO}.git
     cd ${HOME}/IslasGECI/$REPO
     pwd
   fi
-  DEVELOP_NAME=$(hg branches | grep develop | cut -d" " -f1)
-  if [ ! -z "$DEVELOP_NAME" ]; then
-    echo "Desarrollo: $DEVELOP_NAME"
-    get_report "$DEVELOP_NAME"
-  else
-    echo "Desarrollo: no tiene rama develop"
-  fi
-  get_report default
-cd ${HOME}/IslasGECI
+
+  git branch | grep develop && \
+    get_report develop || \
+    echo "${REPO}: no tiene rama develop"
+
+ git branch | grep master && \
+    get_report master || \
+    echo "${REPO}: no tiene rama master"
+
+  cd ${HOME}/IslasGECI
 done <<< "$REPOS"
