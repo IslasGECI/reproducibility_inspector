@@ -31,7 +31,7 @@ while read -r REPO; do
   if [ -d "${HOME}/IslasGECI/$REPO" ]; then
     cd ${HOME}/IslasGECI/$REPO
     pwd
-    git fetch
+    git pull
   else
     git clone git@bitbucket.org:IslasGECI/${REPO}.git
     cd ${HOME}/IslasGECI/$REPO
