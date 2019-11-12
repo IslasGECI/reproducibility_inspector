@@ -1,0 +1,4 @@
+# Variables de entorno
+USER=tablero
+# Cron jobs
+0 9,15,18 * * * . /workdir/.profile && echo "$(/workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh)" >> /var/log/cron.log
