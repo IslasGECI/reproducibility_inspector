@@ -4,10 +4,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Los_Angeles
 RUN apt-get update && apt-get install --yes \
     cron \
+    curl \
     docker.io \
     jq \
     make \
-    tzdata
+    tzdata \
+    vim
 RUN echo $TZ > /etc/timezone && \
     ln --force --no-dereference --symbolic /usr/share/zoneinfo/$TZ /etc/localtime && \ 
     dpkg-reconfigure --frontend noninteractive tzdata
