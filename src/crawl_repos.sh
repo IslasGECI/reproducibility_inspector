@@ -38,11 +38,11 @@ while read -r REPO; do
     pwd
   fi
 
-  git branch | grep develop && \
+  git branch --all | grep develop && \
     get_report develop || \
     echo "${REPO}: no tiene rama develop"
 
- git branch | grep master && \
+ git branch --all | grep master && \
     get_report master || \
     echo "${REPO}: no tiene rama master"
 
