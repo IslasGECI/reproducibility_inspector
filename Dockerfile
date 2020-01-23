@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
 COPY . /workdir
+WORKDIR /workdir
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=America/Los_Angeles
 RUN apt-get update && apt-get install --yes \
@@ -20,5 +21,4 @@ RUN cd /tmp && \
 RUN mkdir --parents /workdir/IslasGECI && \
     touch /var/log/cron.log
 RUN crontab /workdir/src/Cronfile
-WORKDIR /workdir
 CMD ["cron", "-f"]
