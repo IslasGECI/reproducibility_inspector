@@ -10,6 +10,7 @@ docker build --tag islasgeci/reproducibility_inspector:latest .
 ```bash
 docker run \
     --detach \
+    --restart always \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume reproducibility_inspector_vol:/workdir \
     --volume secrets_vol:/.vault \
