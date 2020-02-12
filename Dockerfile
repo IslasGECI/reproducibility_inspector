@@ -19,6 +19,7 @@ RUN cd /tmp && \
     cd misctools && \
     make install
 RUN mkdir --parents /workdir/IslasGECI && \
+    mkdir --parents /workdir/data && \
     touch /var/log/cron.log
 RUN crontab /workdir/src/Cronfile
 CMD ["cron", "-f"]
