@@ -33,7 +33,7 @@ while read -r REPO; do
     pwd
     git pull
   else
-    git clone git@bitbucket.org:IslasGECI/${REPO}.git
+    git clone https://${BITBUCKET_USERNAME}:${BITBUCKET_PASSWORD}@bitbucket.org/IslasGECI/${REPO}.git
     cd /workdir/IslasGECI/$REPO
     pwd
   fi
