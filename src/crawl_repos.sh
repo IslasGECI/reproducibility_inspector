@@ -6,7 +6,7 @@
 function get_report {
       REVISION="$1"
       rm --force analyses.json
-      git checkout $REVISION analyses.json
+      git checkout origin/${REVISION} -- analyses.json
       if [ -f analyses.json ]; then
         REPORTES=$(< analyses.json jq --raw-output '.[].report')
         if [ ! -z "$REPORTES" ]; then
@@ -31,7 +31,7 @@ while read -r REPO; do
   if [ -d "${HOME}/IslasGECI/$REPO" ]; then
     cd ${HOME}/IslasGECI/$REPO
     pwd
-    git pull
+    git fetch
   else
     git clone git@bitbucket.org:IslasGECI/${REPO}.git
     cd ${HOME}/IslasGECI/$REPO
