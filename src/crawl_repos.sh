@@ -24,17 +24,17 @@ function get_report {
       fi
 }
 
-cd ${HOME}/IslasGECI
+cd /workdir/IslasGECI
 pwd
-REPOS=$(< ${HOME}/repositorios/reproducibility_inspector/data/repos.json jq --raw-output '.values[] | select(.scm == "git").slug')
+REPOS=$(< /workdir/data/repos.json jq --raw-output '.values[] | select(.scm == "git").slug')
 while read -r REPO; do
-  if [ -d "${HOME}/IslasGECI/$REPO" ]; then
-    cd ${HOME}/IslasGECI/$REPO
+  if [ -d "/workdir/IslasGECI/$REPO" ]; then
+    cd /workdir/IslasGECI/$REPO
     pwd
     git fetch
   else
-    git clone git@bitbucket.org:IslasGECI/${REPO}.git
-    cd ${HOME}/IslasGECI/$REPO
+    git clone https://${BITBUCKET_USERNAME}:${BITBUCKET_PASSWORD}@bitbucket.org/IslasGECI/${REPO}.git
+    cd /workdir/IslasGECI/$REPO
     pwd
   fi
 
@@ -46,5 +46,5 @@ while read -r REPO; do
     get_report master || \
     echo "${REPO}: no tiene rama master"
 
-  cd ${HOME}/IslasGECI
+  cd /workdir/IslasGECI
 done <<< "$REPOS"
