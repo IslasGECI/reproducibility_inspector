@@ -3,11 +3,11 @@
 Verifica si es posible generar los reportes especificados en `analyses.json` de
 ￼cada repositorio en Git que el equipo IslasGECI tiene en Bitbucket.
 
-```bash
+```shell
 docker build --tag islasgeci/reproducibility_inspector:latest .
 ```
 
-```bash
+```shell
 docker run \
     --detach \
     --name reproducibility_inspector \
@@ -24,7 +24,9 @@ docker run \
 El volumen de Docker `secrets_vol` debe contener el archivo `.secrets` con las
 contraseñas del equipo.
 
-```
+Debe existir el directorio `/.testmake/` en el hospedero de Docker:
+
+```shell
 mkdir --parents /.testmake
-chown $${USER}:$${USER} /.testmake
+chown ${USER}:${USER} /.testmake
 ```
