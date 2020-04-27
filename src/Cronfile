@@ -1,6 +1,6 @@
 # Variables de entorno
 USER=tablero
 # Cron jobs
-0 10,14,18 * * * . /.vault/.secrets && echo "$(/workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh)" >> /var/log/cron.log
+0 18 * * * . /.vault/.secrets && echo "$(/workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh)" >> /var/log/cron.log
 0 12 10,20,30 * * cp /workdir/data/testmake.log.csv /workdir/data/testmake.$(date "+\%m\%d").csv && echo "analista,es_make_exitoso,es_phony,existe_objetivo,id,maquina,objetivo,phony,repo,revision,timestamp" > /workdir/data/testmake.log.csv
 0 * * * * echo "OK: $(date)" >> /var/log/cron.log
