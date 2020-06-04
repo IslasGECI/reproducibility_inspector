@@ -17,8 +17,7 @@ cada repositorio en Git que el equipo [IslasGECI](https://bitbucket.org/IslasGEC
     1. Cambia el directorio de trabajo de Docker al disco _asuncion_ siguiendo [estas instrucciones](docs/how_to_move_dockers_default_directory.md)
 1. Prueba la instalación de Docker: `docker run hello-world`
 1. Crea el directorio de trabajo: `sudo mkdir /.testmake && sudo chown ${USER}:${USER} /.testmake`
-1. Crea un volumen de Docker `secrets_vol` con el archivo `.secrets` que incluya las
-contraseñas del equipo
+1. Crea un volumen de Docker con los secretos del equipo. ([Ver más información.](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing))
 
 ## Construye imagen de Docker
 
