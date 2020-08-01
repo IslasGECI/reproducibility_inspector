@@ -19,7 +19,7 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 1. Agrega usuario al grupo `docker` para correr Docker sin sudo : `sudo usermod -aG docker $USER`
    (hay que salir y volver a entrar para que los cambios tengan efecto)
 1. Prueba la instalación de Docker: `docker run hello-world`
-1. Crea el directorio de trabajo: `${HOME}/.testmake/`
+1. Crea el directorio de trabajo: `mkdir --parents /home/ciencia_datos/.testmake`
 1. Crea un volumen de Docker con los secretos del equipo. ([Ver más
    información.](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing))
 
@@ -40,7 +40,7 @@ docker run \
     --detach \
     --name reproducibility_inspector \
     --restart always \
-    --volume ${HOME}/.testmake:${HOME}/.testmake \
+    --volume /home/ciencia_datos/.testmake:/home/ciencia_datos/.testmake \
     --volume /var/run/docker.sock:/var/run/docker.sock \
     --volume reproducibility_inspector_vol:/workdir \
     --volume secrets_vol:/.vault \
