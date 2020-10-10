@@ -35,10 +35,8 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 
 ## Falta pasar lo siguiente a `ansible-playbook.yml`
 
-1. Crea el directorio de trabajo: `mkdir --parents /home/ciencia_datos/.testmake`
 1. Construye imagen de Docker: `docker build --tag islasgeci/reproducibility_inspector:latest .`
-
-Ejecuta el contenedor
+1. Ejecuta el contenedor:
 
 ```shell
 docker run \
