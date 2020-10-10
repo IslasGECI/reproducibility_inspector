@@ -3,7 +3,7 @@
 Verifica si es posible generar los reportes especificados en `analyses.json` de cada repositorio en
 Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbucket.
 
-## Configura tu estación de trabajo:
+## Configura tu estación de trabajo
 
 1. Configura las credenciales del equipo. ([Ver más
    información.](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing))
@@ -16,6 +16,14 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 1. (Si no lo haz hecho, crea tu clave SSH: `ssh-keygen`)
 1. Agrega la clave SSH de tu estación de trabajo al servidor: `ssh-copy-id ciencia_datos@<IP DEL
    SERVIDOR DE REPRODUCIBILIDAD>`
+
+> NOTA: Sustituye `<IP DEL SERVIDOR DE REPRODUCIBILIDAD>` por el valor correspondiente. Si tu
+> estación de trabajo es el servidor de reproducibilidad, puedes usar `localhost` en lugar de la
+> dirección IP.
+
+> NOTA: En el servidor de reproducibilidad, el usuario `ciencia_datos` debe tener privilegios
+> _sudo_. En las instrucciones anteriores, puedes sustituir `ciencia_datos` por el nombre de
+> cualquier usuario con privilegios _sudo_.
 
 ## Configura el servidor de reproducibilidad
 
