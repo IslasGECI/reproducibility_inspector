@@ -1,0 +1,73 @@
+---
+- hosts: reproducibility_inspector
+  tasks:
+    - name: Configura huso horario
+      timezone:
+        name: America/Los_Angeles
+      become: yes
+    - name: Actualiza paquetes del sistema operativo
+      apt:
+        upgrade: dist
+        update_cache: yes
+      become: yes
+      notify: Reinicia servidor
+    - name: Instala Docker
+      apt:
+        name: "docker.io"
+        state: present
+      become: yes
+    - name: Instala Git
+      apt:
+        name: "git"
+        state: present
+      become: yes
+    - name: Instala Make
+      apt:
+        name: "make"
+        state: present
+      become: yes
+    - name: Instala pip
+      apt:
+        name: "python3-pip"
+        state: present
+      become: yes
+    - name: Instala Docker SDK para Python
+      pip:
+        name: docker
+      notify: Reinicia servidor
+    - name: Agrega '{{ ansible_user_id }}' al grupo docker
+      user:
+        name: '{{ ansible_user_id }}'
+        groups: docker
+        append: yes
+      become: yes
+      notify: Reinicia servidor
+    - name: Copia credenciales
+      copy:
+        src: ~/.vault
+        dest: "{{ ansible_facts.user_dir }}"
+    - name: Copia los archivos de código
+      copy:
+        src: src
+        dest: "{{ ansible_facts.user_dir }}"
+        mode: +x
+      notify: Configura crontab
+    - name: Crea directorio para guardar logs
+      file:
+        path: "{{ ansible_facts.user_dir }}/var/log"
+        state: directory
+        recurse: yes
+  handlers:
+    - name: Configura crontab
+      shell: "crontab {{ ansible_facts.user_dir }}/src/Cronfile"
+      become: yes
+    - name: Reinicia servidor
+      reboot:
+      become: yes
+
+- hosts: reproducibility_inspector
+  tasks:
+    - name: Prueba Docker
+      docker_container:
+        name: hello-world
+        image: hello-world
