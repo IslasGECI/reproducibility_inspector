@@ -36,9 +36,9 @@ docker run \
     --detach \
     --name reproducibility_inspector \
     --restart always \
-    --volume /home/ciencia_datos/.testmake:/home/ciencia_datos/.testmake \
     --volume /var/run/docker.sock:/var/run/docker.sock \
+    --volume ${HOME}/.testmake:/home/ciencia_datos/.testmake \
+    --volume ${HOME}/.vault:/.vault \
     --volume reproducibility_inspector_vol:/workdir \
-    --volume secrets_vol:/.vault \
     islasgeci/reproducibility_inspector:latest
 ```
