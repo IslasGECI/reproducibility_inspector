@@ -23,7 +23,7 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 
 > NOTA: En el servidor de reproducibilidad, el usuario `ciencia_datos` debe tener privilegios
 > _sudo_. En las instrucciones anteriores, puedes sustituir `ciencia_datos` por el nombre de
-> cualquier usuario con privilegios _sudo_.
+> cualquier usuario del servidor de reproducibilidad con privilegios _sudo_.
 
 ## Configura el servidor de reproducibilidad
 
