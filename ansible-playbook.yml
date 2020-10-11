@@ -37,7 +37,7 @@
       notify: Reinicia servidor
     - name: Agrega '{{ ansible_user_id }}' al grupo docker
       user:
-        name: '{{ ansible_user_id }}'
+        name: "{{ ansible_user_id }}"
         groups: docker
         append: yes
       become: yes
@@ -56,6 +56,10 @@
         path: "{{ ansible_facts.user_dir }}/.testmake"
         state: directory
         recurse: yes
+    - name: Jala la imagen islasgeci/reproducibility_inspector
+      docker_image:
+        name: islasgeci/reproducibility_inspector:latest
+        source: pull
   handlers:
     - name: Reinicia servidor
       reboot:
@@ -63,7 +67,14 @@
 
 - hosts: reproducibility_inspector
   tasks:
-    - name: Prueba Docker
+    - name: Inicia contenedor reproducibility_inspector
       docker_container:
-        name: hello-world
-        image: hello-world
+        name: reproducibility_inspector
+        image: "islasgeci/reproducibility_inspector:latest"
+        state: started
+        restart_policy: always
+        volumes:
+          - "{{ ansible_facts.user_dir }}/.testmake:/home/ciencia_datos/.testmake"
+          - "{{ ansible_facts.user_dir }}/.vault:/.vault"
+          - "/var/run/docker.sock:/var/run/docker.sock"
+          - "reproducibility_inspector_vol:/workdir"

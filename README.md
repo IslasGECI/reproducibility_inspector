@@ -32,20 +32,3 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
     1. Clona este repositorio: `git clone https://github.com/IslasGECI/reproducibility_inspector.git`
     1. Entra al repositorio: `cd reproducibility_inspector`
     1. Corre el _playbook_: `ansible-playbook ansible-playbook.yml`
-
-## Falta pasar lo siguiente a `ansible-playbook.yml`
-
-1. Construye imagen de Docker: `docker build --tag islasgeci/reproducibility_inspector:latest .`
-1. Ejecuta el contenedor:
-
-```shell
-docker run \
-    --detach \
-    --name reproducibility_inspector \
-    --restart always \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    --volume ${HOME}/.testmake:/home/ciencia_datos/.testmake \
-    --volume ${HOME}/.vault:/.vault \
-    --volume reproducibility_inspector_vol:/workdir \
-    islasgeci/reproducibility_inspector:latest
-```
