@@ -3,8 +3,9 @@ COPY . /workdir
 WORKDIR /workdir
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/home/ciencia_datos
+ENV SHELL=/bin/bash
 ENV TZ=America/Los_Angeles
-ENV USER=ciencia_datos
+ENV USER=inspector
 RUN apt-get update && apt-get install --yes \
     cron \
     curl \
