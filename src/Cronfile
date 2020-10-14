@@ -1,5 +1,5 @@
 # Variables de entorno
-HOME=/home/ciencia_datos
+HOME=/home/inspector
 SHELL=/bin/bash
 TZ=America/Los_Angeles
 USER=inspector

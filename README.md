@@ -11,24 +11,22 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 1. Agrega _reproducibility_inspector_ a tu inventario:
     1. Abre tu inventario para edición: `sudo vim /etc/ansible/hosts`
     1. Agrega la línea: `reproducibility_inspector ansible_host=<IP DEL SERVIDOR DE
-       REPRODUCIBILIDAD> ansible_user=ciencia_datos`
+       REPRODUCIBILIDAD> ansible_user=<NOMBRE DEL USUARIO>`
     1. Guarda los cambios y sal del editor
 1. (Si no lo haz hecho, crea tu clave SSH: `ssh-keygen`)
-1. Agrega la clave SSH de tu estación de trabajo al servidor: `ssh-copy-id ciencia_datos@<IP DEL
-   SERVIDOR DE REPRODUCIBILIDAD>`
+1. Agrega la clave SSH de tu estación de trabajo al servidor: `ssh-copy-id <NOMBRE DEL USUARIO>@<IP
+   DEL SERVIDOR DE REPRODUCIBILIDAD>`
+1. Verifica la configuración: `ansible reproducibility_inspector --module-name ping --become`
 
-> NOTA: Sustituye `<IP DEL SERVIDOR DE REPRODUCIBILIDAD>` por el valor correspondiente. Si tu
-> estación de trabajo es el servidor de reproducibilidad, puedes usar `localhost` en lugar de la
-> dirección IP.
+> NOTA: Sustituye `<NOMBRE DEL USUARIO>` e `<IP DEL SERVIDOR DE REPRODUCIBILIDAD>` por los valores
+> correspondientes. Si tu estación de trabajo es el servidor de reproducibilidad, puedes usar
+> `localhost` en lugar de la dirección IP.
 
-> NOTA: En el servidor de reproducibilidad, el usuario `ciencia_datos` debe tener privilegios
-> _sudo_. En las instrucciones anteriores, puedes sustituir `ciencia_datos` por el nombre de
-> cualquier usuario del servidor de reproducibilidad con privilegios _sudo_.
+> NOTA: El usuario en el servidor de reproducibilidad debe tener privilegios _sudo_.
 
 ## Configura el servidor de reproducibilidad
 
 1. Configura _reproducibility_inspector_ mediante Ansible desde tu estación de trabajo:
-    1. Verifica la configuración: `ansible reproducibility_inspector --module-name ping --become`
     1. Clona este repositorio: `git clone https://github.com/IslasGECI/reproducibility_inspector.git`
     1. Entra al repositorio: `cd reproducibility_inspector`
     1. Corre el _playbook_: `ansible-playbook ansible-playbook.yml`

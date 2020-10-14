@@ -74,7 +74,8 @@
         state: started
         restart_policy: always
         volumes:
-          - "{{ ansible_facts.user_dir }}/.testmake:/home/ciencia_datos/.testmake"
+          - "{{ ansible_facts.user_dir }}/.testmake:/home/inspector/.testmake"
           - "{{ ansible_facts.user_dir }}/.vault:/.vault"
+          - "{{ ansible_facts.user_dir }}/var/log:/var/log"
           - "/var/run/docker.sock:/var/run/docker.sock"
           - "reproducibility_inspector_vol:/workdir"
