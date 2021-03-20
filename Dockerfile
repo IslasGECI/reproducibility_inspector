@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
-COPY . /workdir
 WORKDIR /workdir
+COPY . .
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/home/ciencia_datos
 ENV TZ=America/Los_Angeles
