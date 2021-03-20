@@ -27,4 +27,5 @@ cd reproducibility_inspector
 make --file=build/Makefile tests
 make --file=build/Makefile image
 make --file=build/Makefile container
+docker exec reproducibility_inspector make tests
 ```
