@@ -1,10 +1,10 @@
 tests: test_credentials test_testmake_directory
 
-.PHONY: run tests test_credentials test_testmake_directory
+.PHONY: container image tests test_credentials test_testmake_directory
 
 HOME = /home/ciencia_datos
 
-run:
+container:
 	docker run \
         --detach \
         --name reproducibility_inspector \
