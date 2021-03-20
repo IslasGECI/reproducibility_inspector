@@ -1,10 +1,10 @@
 tests: test_credentials test_testmake_directory
 
-.PHONY: container tests test_credentials test_testmake_directory
+.PHONY: run tests test_credentials test_testmake_directory
 
 HOME = /home/ciencia_datos
 
-container:
+run:
 	docker run \
         --detach \
         --name reproducibility_inspector \
@@ -12,7 +12,6 @@ container:
         --volume /var/run/docker.sock:/var/run/docker.sock \
         --volume ${HOME}/.testmake:${HOME}/.testmake \
         --volume ${HOME}/.vault:/.vault \
-        --volume reproducibility_inspector_vol:/workdir \
         islasgeci/reproducibility_inspector:latest
 
 image:
