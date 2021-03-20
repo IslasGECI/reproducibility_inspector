@@ -5,13 +5,11 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 
 ## Configuración en una máquina virtual
 
-1. Crea una máquina virtual con un disco duro de 256 GB
-1. Monta el disco disco duro de 256 GB en `/var/lib/docker` (Ver
-   [video](https://youtu.be/jeXFCM9DYNo) sustituyendo `/mnt/datos` por `/var/lib/docker`)
 1. Actualiza el sistema operativo: `sudo apt update && sudo apt dist-upgrade --yes && sudo apt
    autoremove --yes`
 1. Configura zona horaria: `sudo dpkg-reconfigure tzdata` (selecciona `America/Los_Angeles`)
 1. Instala Make y Docker `sudo apt install --yes make docker.io`
+1. Verifica que tengas más de 100 GB disponibles para Docker con `df -H /var/lib/docker`
 1. Agrega usuario al grupo `docker` para correr Docker sin sudo : `sudo usermod -aG docker $USER`
    (hay que salir y volver a entrar para que los cambios tengan efecto)
 1. Prueba la instalación de Docker: `docker run hello-world`
