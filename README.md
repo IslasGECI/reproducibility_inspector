@@ -21,24 +21,12 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 
 ## Construye imagen de Docker
 
-Clona el repo y construye la imagen
+Clona el repo, construye la imagen y corre el contendor:
 
 ```shell
 git clone https://github.com/IslasGECI/reproducibility_inspector.git
 cd reproducibility_inspector
-docker build --tag islasgeci/reproducibility_inspector:latest .
-```
-
-Ejecuta el contenedor
-
-```shell
-docker run \
-    --detach \
-    --name reproducibility_inspector \
-    --restart always \
-    --volume /home/ciencia_datos/.testmake:/home/ciencia_datos/.testmake \
-    --volume /var/run/docker.sock:/var/run/docker.sock \
-    --volume reproducibility_inspector_vol:/workdir \
-    --volume secrets_vol:/.vault \
-    islasgeci/reproducibility_inspector:latest
+make --file=build/Makefile tests
+make --file=build/Makefile image
+make --file=build/Makefile container
 ```
