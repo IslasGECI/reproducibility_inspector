@@ -30,3 +30,8 @@ make --file=build/Makefile image
 make --file=build/Makefile container
 docker exec reproducibility_inspector make tests
 ```
+Si ocurriera un error se obtendra algo parecido a la siguiente linea:
+```
+make: *** [...] Error 1
+```
+De lo contrario todo está bien y las pruebas se ejecutaron con exito.
