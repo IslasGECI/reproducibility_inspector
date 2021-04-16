@@ -1,7 +1,7 @@
 # Variables de entorno
 HOME=/home/ciencia_datos
 SHELL=/bin/bash
-USER=inspector
+USER=ciencia_datos
 # Cron jobs
 0 18 * * * echo "$(source /.vault/.secrets && /workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh)" >> /var/log/cron.log
 0 * * * * echo "OK: $(date)" >> /var/log/cron.log
