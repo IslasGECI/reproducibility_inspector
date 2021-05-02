@@ -3,5 +3,5 @@ HOME=/home/ciencia_datos
 SHELL=/bin/bash
 USER=ciencia_datos
 # Cron jobs
-0 18 * * * echo "$(source /.vault/.secrets && /workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh)" >> /var/log/cron.log
-0 * * * * echo "OK: $(date)" >> /var/log/cron.log
+0 16 * * * curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/a55d2311-89dd-4cf1-b5f3-74068147a259/start && source /.vault/.secrets && /workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh && curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/a55d2311-89dd-4cf1-b5f3-74068147a259
+0 * * * * curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/4637ce28-50aa-41c8-93af-1489f5d7d296
