@@ -9,16 +9,15 @@ tests: \
 		test_testmake_directory \
 		tests
 
-CONTAINER_HOME = /home/ciencia_datos
-HOST_HOME = $${HOME}
+HOME = /home/ciencia_datos
 
 container:
 	docker run \
 		--detach \
 		--name reproducibility_inspector \
 		--restart always \
-		--volume ${HOST_HOME}/.ssh:/root/.ssh:ro \
-		--volume ${HOST_HOME}/.testmake:${CONTAINER_HOME}/.testmake \
+		--volume $${HOME}/.ssh:/root/.ssh:ro \
+		--volume ${HOME}/.testmake:${HOME}/.testmake \
 		--volume /var/run/docker.sock:/var/run/docker.sock \
 		islasgeci/reproducibility_inspector:latest
 
@@ -29,4 +28,4 @@ test_credentials:
 	ssh -T git@bitbucket.org
 
 test_testmake_directory:
-	[ -d "${HOST_HOME}/.testmake" ]
+	[ -d "${HOME}/.testmake" ]
