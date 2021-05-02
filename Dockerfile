@@ -1,4 +1,5 @@
 FROM ubuntu:20.04
+USER ciencia_datos
 WORKDIR /workdir
 COPY . .
 ENV DEBIAN_FRONTEND=noninteractive
