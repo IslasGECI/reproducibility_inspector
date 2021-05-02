@@ -5,7 +5,7 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 
 ## Configuración en servidor local o en estación de trabajo
 
-1. Crea el usuario `ciencia_datos`: `sudo adduser ciencia_datos`
+1. Crea el usuario ciencia_datos: `sudo adduser ciencia_datos`
 1. Agrega `ciencia_datos` a la lista de sudoers: `sudo usermod -aG sudo ciencia_datos` (hay que
    salir y volver a entrar para que los cambios tengan efecto)
 1. Entra a la nueva cuenta: `su - ciencia_datos`
@@ -20,6 +20,7 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 1. Prueba la instalación de Docker: `docker run hello-world`
 1. Configura las credenciales de Bitbucket siguiendo las siguientes
    [instrucciones](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing).
+
 ## Construye imagen de Docker
 
 Clona el repo, corre las pruebas del hospedero, construye la imagen, corre el contendor y corre las
