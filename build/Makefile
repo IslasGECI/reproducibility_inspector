@@ -17,7 +17,7 @@ container:
 		--detach \
 		--name reproducibility_inspector \
 		--restart always \
-		--volume ${HOST_HOME}/.ssh:${CONTAINER_HOME}/.ssh:ro \
+		--volume ${HOST_HOME}/.ssh:/root/.ssh:ro \
 		--volume ${HOST_HOME}/.testmake:${CONTAINER_HOME}/.testmake \
 		--volume /var/run/docker.sock:/var/run/docker.sock \
 		islasgeci/reproducibility_inspector:latest
