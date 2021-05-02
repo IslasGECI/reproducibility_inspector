@@ -10,7 +10,7 @@ tests: \
 HOME = /home/ciencia_datos
 
 test_credentials:
-	[ -d "${HOME}/.ssh" ]
+	ssh -T git@bitbucket.org
 
 test_testmake_directory:
 	[ -d "${HOME}/.testmake" ]

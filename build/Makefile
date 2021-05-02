@@ -26,7 +26,7 @@ image:
 	docker build --tag islasgeci/reproducibility_inspector:latest .
 
 test_credentials:
-	[ -d "${HOST_HOME}/.ssh" ]
+	ssh -T git@bitbucket.org
 
 test_testmake_directory:
 	[ -d "${HOST_HOME}/.testmake" ]
