@@ -16,6 +16,7 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 1. Crea el directorio de trabajo: `mkdir --parents ~/.testmake`
 1. Configura las credenciales de Bitbucket siguiendo las siguientes
    [instrucciones](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#Set-up-SSH-on-macOS/Linux).
+
 ## Construye imagen de Docker
 
 Clona el repo, corre las pruebas del hospedero, construye la imagen, corre el contendor y corre las
