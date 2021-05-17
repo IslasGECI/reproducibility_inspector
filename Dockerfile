@@ -1,11 +1,11 @@
 FROM ubuntu:20.04
-USER ciencia_datos
 WORKDIR /workdir
 COPY . .
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/home/ciencia_datos
 ENV TZ=America/Los_Angeles
 ENV USER=ciencia_datos
+RUN useradd --create-home ${USER}
 RUN apt-get update && apt-get install --yes \
     cron \
     curl \
@@ -17,7 +17,6 @@ RUN apt-get update && apt-get install --yes \
 RUN echo $TZ > /etc/timezone && \
     ln --force --no-dereference --symbolic /usr/share/zoneinfo/$TZ /etc/localtime && \ 
     dpkg-reconfigure --frontend noninteractive tzdata
-RUN mkdir --parents ${HOME}
 RUN cd /tmp && \
     git clone https://github.com/IslasGECI/misctools.git && \
     cd misctools && \
