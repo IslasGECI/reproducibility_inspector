@@ -7,8 +7,10 @@ tests: \
 		test_testmake_directory \
 		tests
 
+HOME = /home/ciencia_datos
+
 test_credentials:
-	cat /.vault/.secrets | grep BITBUCKET_USERNAME
+	[ -f ${HOME}/.vault/.secrets ]
 
 test_testmake_directory:
-	[ -d /home/ciencia_datos/.testmake ]
+	[ -d ${HOME}/.testmake ]
