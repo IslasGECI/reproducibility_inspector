@@ -18,14 +18,14 @@ container:
 		--restart always \
 		--volume /var/run/docker.sock:/var/run/docker.sock \
 		--volume ${HOME}/.testmake:${HOME}/.testmake \
-		--volume ${HOME}/.vault:/.vault \
+		--volume ${HOME}/.vault:${HOME}/.vault \
 		islasgeci/reproducibility_inspector:latest
 
 image:
 	docker build --tag islasgeci/reproducibility_inspector:latest .
 
 test_credentials:
-	cat ${HOME}/.vault/.secrets | grep BITBUCKET_USERNAME
+	[ -f ${HOME}/.vault/.secrets ]
 
 test_testmake_directory:
 	[ -d ${HOME}/.testmake ]

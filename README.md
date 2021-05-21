@@ -5,6 +5,11 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 
 ## Configuración en servidor local o en estación de trabajo
 
+1. Crea el usuario ciencia_datos: `sudo adduser ciencia_datos`
+1. Agrega `ciencia_datos` a la lista de sudoers: `sudo usermod -aG sudo ciencia_datos` (hay que
+   salir y volver a entrar para que los cambios tengan efecto)
+1. Entra a la nueva cuenta: `su - ciencia_datos`
+1. Crea el directorio de trabajo: `mkdir --parents /home/ciencia_datos/.testmake`
 1. Actualiza el sistema operativo: `sudo apt update && sudo apt dist-upgrade --yes && sudo apt
    autoremove --yes`
 1. Configura zona horaria: `sudo dpkg-reconfigure tzdata` (selecciona `America/Los_Angeles`)
@@ -13,9 +18,9 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 1. Agrega usuario al grupo `docker` para correr Docker sin sudo : `sudo usermod -aG docker $USER`
    (hay que salir y volver a entrar para que los cambios tengan efecto)
 1. Prueba la instalación de Docker: `docker run hello-world`
-1. Crea el directorio `/ciencia_datos/.testmake` en el directorio base `/home`. Por ejemplo, puedes usar la siguiente instrucción
-Cómo se pronuncia: `sudo mkdir --parents /home/ciencia_datos/.testmake`
-1. Configura las credenciales de Bitbucket siguiendo las siguientes [instrucciones](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing).
+1. Configura las credenciales de Bitbucket siguiendo las siguientes
+   [instrucciones](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing).
+
 ## Construye imagen de Docker
 
 Clona el repo, corre las pruebas del hospedero, construye la imagen, corre el contendor y corre las
