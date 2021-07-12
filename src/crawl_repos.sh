@@ -42,6 +42,10 @@ while read -r REPO; do
     get_report develop || \
     echo "${REPO}: no tiene rama develop"
 
+ git branch --all | grep main && \
+    get_report main || \
+    echo "${REPO}: no tiene rama main"
+
  git branch --all | grep master && \
     get_report master || \
     echo "${REPO}: no tiene rama master"
