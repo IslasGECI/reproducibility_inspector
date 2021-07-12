@@ -3,7 +3,7 @@
 Verifica si es posible generar los reportes especificados en `analyses.json` de cada repositorio en
 Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbucket.
 
-## Configuración en servidor local o en estación de trabajo
+## Configuración inicial del servidor
 
 1. Crea el usuario ciencia_datos: `sudo adduser ciencia_datos`
 1. Agrega `ciencia_datos` a la lista de sudoers: `sudo usermod -aG sudo ciencia_datos` (hay que
@@ -23,19 +23,47 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 
 ## Construye imagen de Docker
 
-Clona el repo, corre las pruebas del hospedero, construye la imagen, corre el contendor y corre las
-pruebas del contenedor huesped:
+1. Nos conectamos al servidor:
+```shell
+ssh ciencia_datos@islasgeci.dev
+```
+- Si no tenemos las credenciales se las pedimos al encargado
 
+2. Clona el repo:
 ```shell
 git clone https://github.com/IslasGECI/reproducibility_inspector.git
+```
+
+3. Corre las pruebas del hospedero:
+```shell
 cd reproducibility_inspector
+git fetch && git checkout origin/develop
 make --file=build/Makefile tests
+```
+
+4. Construye la imagen:
+```shell
 make --file=build/Makefile image
+```
+
+5. Corre el contendor:
+  1. Si está corriendo el contenedor _reproducibility_inspector_ páralo y bórralo:
+```shell
+docker stop reproducibility_inspector
+docker rm reproducibility_inspector
+```
+  1. Corre el contenedor nuevo:
+```shell
 make --file=build/Makefile container
+```
+
+6. Corre las pruebas del contenedor huesped:
+```shell
 docker exec reproducibility_inspector make tests
 ```
-Si ocurriera un error se obtendra algo parecido a la siguiente linea:
+
+Si ocurriera un error se obtendrá algo parecido a la siguiente linea:
 ```
 make: *** [...] Error 1
 ```
-De lo contrario todo está bien y las pruebas se ejecutaron con exito.
+De lo contrario todo está bien y las pruebas se ejecutaron con éxito.
