@@ -37,7 +37,8 @@ git clone https://github.com/IslasGECI/reproducibility_inspector.git
 3. Corre las pruebas del hospedero:
 ```shell
 cd reproducibility_inspector
-git fetch && git checkout origin/develop
+git checkout develop
+git pull
 make --file=build/Makefile tests
 ```
 
