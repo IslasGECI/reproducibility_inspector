@@ -2,5 +2,6 @@
 HOME=/home/ciencia_datos
 SHELL=/bin/bash
 USER=ciencia_datos
+UUID=a55d2311-89dd-4cf1-b5f3-74068147a259
 # Cron jobs
-0 18 * * * curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/a55d2311-89dd-4cf1-b5f3-74068147a259/start && source $HOME/.vault/.secrets && /workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh && curl -fsS -m 10 --retry 5 -o /dev/null https://hc-ping.com/a55d2311-89dd-4cf1-b5f3-74068147a259
+0 18 * * * . ${HOME}/src/notify_healthchecks.sh && notify_healthchecks "${UUID}/start" "Checking reproducibility" && source $HOME/.vault/.secrets && /workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh && notify_healthchecks "${UUID}" "Reproducibility has been successfully checked" || notify_healthchecks "${UUID}/fail" "Reproducibility was not checked"
