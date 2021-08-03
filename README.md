@@ -37,7 +37,8 @@ git clone https://github.com/IslasGECI/reproducibility_inspector.git
 3. Corre las pruebas del hospedero:
 ```shell
 cd reproducibility_inspector
-git fetch && git checkout origin/develop
+git checkout develop
+git pull
 make --file=build/Makefile tests
 ```
 
@@ -47,15 +48,16 @@ make --file=build/Makefile image
 ```
 
 5. Corre el contendor:
-  1. Si está corriendo el contenedor _reproducibility_inspector_ páralo y bórralo:
-```shell
-docker stop reproducibility_inspector
-docker rm reproducibility_inspector
-```
-  1. Corre el contenedor nuevo:
-```shell
-make --file=build/Makefile container
-```
+
+   1. Si está corriendo el contenedor _reproducibility_inspector_ páralo y bórralo:
+   ```shell
+   docker stop reproducibility_inspector
+   docker rm reproducibility_inspector
+   ```
+   2. Corre el contenedor nuevo:
+   ```shell
+   make --file=build/Makefile container
+   ```
 
 6. Corre las pruebas del contenedor huesped:
 ```shell
