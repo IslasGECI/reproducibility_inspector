@@ -18,8 +18,8 @@ RUN echo $TZ > /etc/timezone && \
     ln --force --no-dereference --symbolic /usr/share/zoneinfo/$TZ /etc/localtime && \ 
     dpkg-reconfigure --frontend noninteractive tzdata
 RUN cd /tmp && \
-    git clone https://github.com/IslasGECI/misctools.git && \
-    cd misctools && \
+    git clone https://github.com/IslasGECI/testmake.git && \
+    cd testmake && \
     make install
 RUN mkdir --parents /workdir/IslasGECI && \
     mkdir --parents /workdir/data && \

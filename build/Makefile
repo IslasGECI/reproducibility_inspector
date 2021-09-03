@@ -15,7 +15,7 @@ container:
 	docker run \
 		--detach \
 		--name reproducibility_inspector \
-		--restart always \
+		--rm \
 		--volume /var/run/docker.sock:/var/run/docker.sock \
 		--volume ${HOME}/.testmake:${HOME}/.testmake \
 		--volume ${HOME}/.vault:${HOME}/.vault \
