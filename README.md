@@ -25,9 +25,8 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 
 1. Nos conectamos al servidor:
 ```shell
-ssh ciencia_datos@islasgeci.dev
+ssh ciencia_datos@reproducibility.dev
 ```
-- Si no tenemos las credenciales se las pedimos al encargado
 
 2. Clona el repo:
 ```shell
@@ -37,8 +36,6 @@ git clone https://github.com/IslasGECI/reproducibility_inspector.git
 3. Corre las pruebas del hospedero:
 ```shell
 cd reproducibility_inspector
-git checkout develop
-git pull
 make --file=build/Makefile tests
 ```
 
