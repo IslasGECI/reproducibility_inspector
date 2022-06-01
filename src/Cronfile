@@ -1,7 +1,1 @@
-# Variables de entorno
-HOME=/home/ciencia_datos
-SHELL=/bin/bash
-USER=ciencia_datos
-UUID=a55d2311-89dd-4cf1-b5f3-74068147a259
-# Cron jobs
-0 18 * * * . /workdir/src/notify_healthchecks.sh && notify_healthchecks "${UUID}/start" "Checking reproducibility" && source $HOME/.vault/.secrets && /workdir/src/get_repos.sh && /workdir/src/crawl_repos.sh && notify_healthchecks "${UUID}" "Reproducibility has been successfully checked" || notify_healthchecks "${UUID}/fail" "Reproducibility was not checked"
+0 18 * * * /workdir/src/inspect_reproducibility.sh
