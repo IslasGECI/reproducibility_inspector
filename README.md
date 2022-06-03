@@ -1,3 +1,5 @@
+<a href="https://www.islas.org.mx/"><img src="https://www.islas.org.mx/img/logo.svg" align="right" width="256" /></a>
+
 # Inspector de Reproducibilidad
 
 Verifica si es posible generar los reportes especificados en `analyses.json` de cada repositorio en
