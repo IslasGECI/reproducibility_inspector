@@ -13,12 +13,13 @@ HOME = /home/ciencia_datos
 
 container:
 	docker run \
-		--detach \
-		--name reproducibility_inspector \
-		--rm \
-		--volume /var/run/docker.sock:/var/run/docker.sock \
-		--volume ${HOME}/.testmake:${HOME}/.testmake \
-		--volume ${HOME}/.vault:${HOME}/.vault \
+                --detach \
+                --name reproducibility_inspector \
+                --restart=always \
+                --volume ${HOME}/.ssh:${HOME}/.ssh \
+                --volume ${HOME}/.testmake:${HOME}/.testmake \
+                --volume ${HOME}/.vault:${HOME}/.vault \
+                --volume /var/run/docker.sock:/var/run/docker.sock \		
 		islasgeci/reproducibility_inspector:latest
 
 image:
