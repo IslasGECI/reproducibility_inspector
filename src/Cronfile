@@ -1,1 +1,7 @@
-0 18 * * * /workdir/src/inspect_reproducibility.sh
+# Environment variables
+HOME=/home/ciencia_datos
+SHELL=/bin/bash
+USER=ciencia_datos
+
+# Cron jobs
+@reboot /workdir/src/inspect_reproducibility.sh
