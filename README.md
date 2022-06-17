@@ -3,6 +3,11 @@
 Verifica si es posible generar los reportes especificados en `analyses.json` de cada repositorio en
 Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbucket.
 
+## Crea un servidor
+
+1. Verifica que tengas más de 100 GB disponibles para Docker con `df -H /var/lib/docker`
+    - Ve [este video](https://www.youtube.com/watch?v=jeXFCM9DYNo)
+
 ## Configuración inicial del servidor
 
 1. Crea el usuario ciencia_datos: `sudo adduser ciencia_datos`
@@ -14,7 +19,6 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
    autoremove --yes`
 1. Configura zona horaria: `sudo dpkg-reconfigure tzdata` (selecciona `America/Los_Angeles`)
 1. Instala Git, Make y Docker `sudo apt install --yes git make docker.io`
-1. Verifica que tengas más de 100 GB disponibles para Docker con `df -H /var/lib/docker`
 1. Agrega usuario al grupo `docker` para correr Docker sin sudo : `sudo usermod -aG docker $USER`
    (hay que salir y volver a entrar para que los cambios tengan efecto)
 1. Prueba la instalación de Docker: `docker run hello-world`
