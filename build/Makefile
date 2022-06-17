@@ -14,12 +14,11 @@ HOME = /home/ciencia_datos
 container:
 	docker run \
 		--detach \
-		--env SSH_AUTH_SOCK=/ssh-agent \
 		--name reproducibility_inspector \
 		--restart=always \
+		--volume ${HOME}/.ssh/id_rsa:${HOME}/.ssh/id_rsa \
 		--volume ${HOME}/.testmake:${HOME}/.testmake \
 		--volume ${HOME}/.vault:${HOME}/.vault \
-		--volume ${SSH_AUTH_SOCK}:/ssh-agent \
 		--volume /var/run/docker.sock:/var/run/docker.sock \
 		islasgeci/reproducibility_inspector:latest
 
