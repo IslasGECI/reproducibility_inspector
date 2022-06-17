@@ -1,10 +1,12 @@
 FROM ubuntu:22.04
+COPY . /workdir
 WORKDIR /workdir
-COPY . .
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/home/ciencia_datos
 ENV TZ=America/Los_Angeles
 ENV USER=ciencia_datos
+
 RUN useradd --create-home ${USER}
 RUN apt-get update && apt-get install --yes \
     cron \
@@ -22,7 +24,8 @@ RUN cd /tmp && \
     cd testmake && \
     make install
 RUN mkdir --parents /workdir/IslasGECI && \
-    mkdir --parents /workdir/data && \
-    touch /var/log/cron.log
+    mkdir --parents /workdir/data
+
+USER ${USER}
 RUN crontab /workdir/src/Cronfile
 CMD ["cron", "-f"]
