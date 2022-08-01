@@ -16,7 +16,7 @@ container:
 		--detach \
 		--name reproducibility_inspector \
 		--restart=always \
-		--volume ${HOME}/.ssh/id_rsa:${HOME}/.ssh/id_rsa \
+		--volume ${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa \
 		--volume ${HOME}/.testmake:${HOME}/.testmake \
 		--volume ${HOME}/.vault:${HOME}/.vault \
 		--volume /var/run/docker.sock:/var/run/docker.sock \
