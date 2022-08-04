@@ -24,7 +24,7 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
 1. Prueba la instalación de Docker: `docker run hello-world`
 1. Configura las credenciales de Bitbucket siguiendo las siguientes
    [instrucciones](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing).
-1. Generar y agregar la llave SSH al Bitbucker
+1. Generar y agregar la llave SSH al Bitbucket. Para eso debemos remover la llave pasada.
 
 ## Construye imagen de Docker
 
