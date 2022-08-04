@@ -15,10 +15,11 @@ container:
 	docker run \
 		--detach \
 		--name reproducibility_inspector \
-		--rm \
-		--volume /var/run/docker.sock:/var/run/docker.sock \
+		--restart=always \
+		--volume ${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa \
 		--volume ${HOME}/.testmake:${HOME}/.testmake \
 		--volume ${HOME}/.vault:${HOME}/.vault \
+		--volume /var/run/docker.sock:/var/run/docker.sock \
 		islasgeci/reproducibility_inspector:latest
 
 image:

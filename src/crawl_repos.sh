@@ -3,6 +3,9 @@
 # 'crawl_repos' genera los reportes especificados en analyses.json de cada repo.
 # La lista de repos la lee de 'data/repos.json'.
 
+# Set strict mode (http://redsymbol.net/articles/unofficial-bash-strict-mode)
+set -euo pipefail
+
 function get_report {
       REVISION="$1"
       rm --force analyses.json

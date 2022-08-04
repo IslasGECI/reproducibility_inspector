@@ -5,6 +5,11 @@
 Verifica si es posible generar los reportes especificados en `analyses.json` de cada repositorio en
 Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbucket.
 
+## Crea un servidor
+
+1. Verifica que tengas más de 100 GB disponibles para Docker con `df -H /var/lib/docker`
+    - Ve [este video](https://www.youtube.com/watch?v=jeXFCM9DYNo)
+
 ## Configuración inicial del servidor
 
 1. Crea el usuario ciencia_datos: `sudo adduser ciencia_datos`
@@ -16,20 +21,19 @@ Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbuck
    autoremove --yes`
 1. Configura zona horaria: `sudo dpkg-reconfigure tzdata` (selecciona `America/Los_Angeles`)
 1. Instala Git, Make y Docker `sudo apt install --yes git make docker.io`
-1. Verifica que tengas más de 100 GB disponibles para Docker con `df -H /var/lib/docker`
 1. Agrega usuario al grupo `docker` para correr Docker sin sudo : `sudo usermod -aG docker $USER`
    (hay que salir y volver a entrar para que los cambios tengan efecto)
 1. Prueba la instalación de Docker: `docker run hello-world`
 1. Configura las credenciales de Bitbucket siguiendo las siguientes
    [instrucciones](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing).
+1. Generar y agregar la llave SSH al Bitbucket. Para eso debemos remover la llave pasada.
 
 ## Construye imagen de Docker
 
 1. Nos conectamos al servidor:
 ```shell
-ssh ciencia_datos@islasgeci.dev
+ssh ciencia_datos@reproducibility.dev
 ```
-- Si no tenemos las credenciales se las pedimos al encargado
 
 2. Clona el repo:
 ```shell
@@ -39,8 +43,6 @@ git clone https://github.com/IslasGECI/reproducibility_inspector.git
 3. Corre las pruebas del hospedero:
 ```shell
 cd reproducibility_inspector
-git checkout develop
-git pull
 make --file=build/Makefile tests
 ```
 
