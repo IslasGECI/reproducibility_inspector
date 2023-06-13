@@ -1,0 +1,22 @@
+name: Build and push Docker image
+on: push
+
+jobs:
+  actions:
+    runs-on: ubuntu-latest
+    env:
+      github_sha: ${{ github.sha }}
+    steps:
+    - name: Copy repository
+      uses: actions/checkout@main
+    - name: Build image
+      run: docker build --tag islasgeci/reproducibility_inspector:latest --tag islasgeci/reproducibility_inspector:${github_sha:0:4} .
+    - name: Docker log-in
+      env:
+        docker_username: ${{ secrets.docker_username }}
+        docker_password: ${{ secrets.docker_password }}
+      run: echo "${docker_password}" | docker login -u "${docker_username}" --password-stdin
+    - name: Upload image to Docker Hub
+      run: docker push islasgeci/reproducibility_inspector:latest
+    - name: Tag image with hash
+      run: docker push islasgeci/reproducibility_inspector:${github_sha:0:4}
