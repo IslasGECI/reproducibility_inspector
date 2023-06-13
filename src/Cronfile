@@ -4,5 +4,4 @@ SHELL=/bin/bash
 USER=ciencia_datos
 
 # Cron jobs
-0 12 * * * docker pull islasgeci/base:latest
 0 17 * * * /workdir/src/inspect_reproducibility.sh
