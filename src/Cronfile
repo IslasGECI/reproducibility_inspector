@@ -4,4 +4,4 @@ SHELL=/bin/bash
 USER=ciencia_datos
 
 # Cron jobs
-0 17 * * * ssh-keyscan "bitbucket.org" > "/home/ciencia_datos/.ssh/known_hosts" && /workdir/src/inspect_reproducibility.sh
+0 17 * * * mkdir --parents /root/.ssh && ssh-keyscan "bitbucket.org" > "/root/.ssh/known_hosts" && /workdir/src/inspect_reproducibility.sh
