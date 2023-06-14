@@ -24,7 +24,7 @@ RUN cd /tmp && \
     cd testmake && \
     make install
 RUN mkdir --parents /workdir/IslasGECI && \
-    mkdir --parents /workdir/data
-
+    mkdir --parents /workdir/data && \
+    mkdir --parents /root/.ssh
 RUN crontab /workdir/src/Cronfile
 CMD ["cron", "-f"]
