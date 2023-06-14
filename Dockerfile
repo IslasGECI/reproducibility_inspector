@@ -25,6 +25,6 @@ RUN cd /tmp && \
     make install
 RUN mkdir --parents /workdir/IslasGECI && \
     mkdir --parents /workdir/data
-USER ${USER}
+
 RUN crontab /workdir/src/Cronfile
 CMD ["cron", "-f"]
