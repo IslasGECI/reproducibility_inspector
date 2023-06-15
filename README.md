@@ -1,75 +1,11 @@
 <a href="https://www.islas.org.mx/"><img src="https://www.islas.org.mx/img/logo.svg" align="right" width="256" /></a>
 
-# Inspector de Reproducibilidad
+# Reproducibility Inspector
 
-Verifica si es posible generar los reportes especificados en `analyses.json` de cada repositorio en
-Git que el equipo [IslasGECI](https://bitbucket.org/IslasGECI/) tiene en Bitbucket.
+Verify that is possible to generate the reports defined in `analyses.json` for each Git repository
+that [IslasGECI](https://bitbucket.org/IslasGECI/) has in Bitbucket.
 
-## Crea un servidor
+This repository defines a Docker image that runs on a server defined in
+[reproducibility_inspector_setup](https://github.com/IslasGECI/reproducibility_inspector_setup),
+which, in turn, is provided by [provisioner](https://github.com/IslasGECI/provisioner).
 
-1. Verifica que tengas más de 100 GB disponibles para Docker con `df -H /var/lib/docker`
-    - Ve [este video](https://www.youtube.com/watch?v=jeXFCM9DYNo)
-
-## Configuración inicial del servidor
-
-1. Crea el usuario ciencia_datos: `sudo adduser ciencia_datos`
-1. Agrega `ciencia_datos` a la lista de sudoers: `sudo usermod -aG sudo ciencia_datos` (hay que
-   salir y volver a entrar para que los cambios tengan efecto)
-1. Entra a la nueva cuenta: `su - ciencia_datos`
-1. Crea el directorio de trabajo: `mkdir --parents /home/ciencia_datos/.testmake`
-1. Actualiza el sistema operativo: `sudo apt update && sudo apt dist-upgrade --yes && sudo apt
-   autoremove --yes`
-1. Configura zona horaria: `sudo dpkg-reconfigure tzdata` (selecciona `America/Los_Angeles`)
-1. Instala Git, Make y Docker `sudo apt install --yes git make docker.io`
-1. Agrega usuario al grupo `docker` para correr Docker sin sudo : `sudo usermod -aG docker $USER`
-   (hay que salir y volver a entrar para que los cambios tengan efecto)
-1. Prueba la instalación de Docker: `docker run hello-world`
-1. Configura las credenciales de Bitbucket siguiendo las siguientes
-   [instrucciones](https://docs.google.com/document/d/1lY7ycXs4J8wp1OyJCmPsvfB7YdQqscqL52cIZxBP6Rw/edit?usp=sharing).
-1. Generar y agregar la llave SSH al Bitbucket. Para eso debemos remover la llave pasada.
-
-## Construye imagen de Docker
-
-1. Nos conectamos al servidor:
-```shell
-ssh ciencia_datos@reproducibility.dev
-```
-
-2. Clona el repo:
-```shell
-git clone https://github.com/IslasGECI/reproducibility_inspector.git
-```
-
-3. Corre las pruebas del hospedero:
-```shell
-cd reproducibility_inspector
-make --file=build/Makefile tests
-```
-
-4. Construye la imagen:
-```shell
-make --file=build/Makefile image
-```
-
-5. Corre el contendor:
-
-   1. Si está corriendo el contenedor _reproducibility_inspector_ páralo y bórralo:
-   ```shell
-   docker stop reproducibility_inspector
-   docker rm reproducibility_inspector
-   ```
-   2. Corre el contenedor nuevo:
-   ```shell
-   make --file=build/Makefile container
-   ```
-
-6. Corre las pruebas del contenedor huesped:
-```shell
-docker exec reproducibility_inspector make tests
-```
-
-Si ocurriera un error se obtendrá algo parecido a la siguiente linea:
-```
-make: *** [...] Error 1
-```
-De lo contrario todo está bien y las pruebas se ejecutaron con éxito.
