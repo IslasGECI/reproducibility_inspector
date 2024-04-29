@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 COPY . /workdir
 WORKDIR /workdir
 
@@ -8,14 +8,16 @@ ENV TZ=America/Los_Angeles
 ENV USER=ciencia_datos
 
 RUN useradd --create-home ${USER}
-RUN apt-get update && apt-get install --yes \
+RUN apt update && apt install --yes \
     cron \
     curl \
     docker.io \
     jq \
     make \
+    pip \
     tzdata \
     vim
+RUN pip install container-runner==0.1.0
 RUN echo $TZ > /etc/timezone && \
     ln --force --no-dereference --symbolic /usr/share/zoneinfo/$TZ /etc/localtime && \ 
     dpkg-reconfigure --frontend noninteractive tzdata
