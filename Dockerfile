@@ -15,9 +15,10 @@ RUN apt update && apt install --yes \
     jq \
     make \
     python3-pip \
+    pipx \
     tzdata \
     vim
-RUN pip install container-runner==0.1.0 --break-system-packages
+RUN pipx install container-runner==0.1.0 && pipx ensurepath
 RUN echo $TZ > /etc/timezone && \
     ln --force --no-dereference --symbolic /usr/share/zoneinfo/$TZ /etc/localtime && \ 
     dpkg-reconfigure --frontend noninteractive tzdata
