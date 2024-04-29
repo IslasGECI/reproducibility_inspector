@@ -17,7 +17,7 @@ RUN apt update && apt install --yes \
     python3-pip \
     tzdata \
     vim
-RUN pip install container-runner==0.1.0
+RUN pip install container-runner==0.1.0 --break-system-packages
 RUN echo $TZ > /etc/timezone && \
     ln --force --no-dereference --symbolic /usr/share/zoneinfo/$TZ /etc/localtime && \ 
     dpkg-reconfigure --frontend noninteractive tzdata
