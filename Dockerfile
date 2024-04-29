@@ -14,7 +14,7 @@ RUN apt update && apt install --yes \
     docker.io \
     jq \
     make \
-    pip \
+    python3-pip \
     tzdata \
     vim
 RUN pip install container-runner==0.1.0
