@@ -18,7 +18,8 @@ RUN apt update && apt install --yes \
     pipx \
     tzdata \
     vim
-RUN pipx install container-runner==0.1.0 && pipx ensurepath
+ENV PATH="$PATH:/home/ciencia_datos/.local/bin"
+RUN pipx install container-runner==0.1.0
 RUN echo $TZ > /etc/timezone && \
     ln --force --no-dereference --symbolic /usr/share/zoneinfo/$TZ /etc/localtime && \ 
     dpkg-reconfigure --frontend noninteractive tzdata
