@@ -14,12 +14,9 @@ RUN apt update && apt install --yes \
     docker.io \
     jq \
     make \
-    python3-pip \
     pipx \
     tzdata \
     vim
-ENV PATH="$PATH:/home/ciencia_datos/.local/bin"
-RUN pipx install container-runner==0.1.0
 RUN echo $TZ > /etc/timezone && \
     ln --force --no-dereference --symbolic /usr/share/zoneinfo/$TZ /etc/localtime && \ 
     dpkg-reconfigure --frontend noninteractive tzdata
