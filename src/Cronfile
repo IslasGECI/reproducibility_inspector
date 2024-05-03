@@ -2,6 +2,6 @@
 HOME=/home/ciencia_datos
 SHELL=/bin/bash
 USER=ciencia_datos
-
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/ciencia_datos/.local/bin
 # Cron jobs
 0 17 * * * ssh-keyscan "bitbucket.org" > "/root/.ssh/known_hosts" && /workdir/src/inspect_reproducibility.sh
