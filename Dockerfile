@@ -23,7 +23,7 @@ RUN echo $TZ > /etc/timezone && \
 RUN cd /tmp && \
     git clone https://github.com/IslasGECI/testmake.git && \
     cd testmake && \
-    make install
+    make install_in_container
 RUN mkdir --parents /workdir/IslasGECI && \
     mkdir --parents /workdir/data && \
     mkdir --parents /root/.ssh
