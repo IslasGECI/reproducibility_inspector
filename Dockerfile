@@ -14,7 +14,7 @@ RUN apt update && apt install --yes \
     docker.io \
     jq \
     make \
-    pipx \
+    pip \
     tzdata \
     vim
 RUN echo $TZ > /etc/timezone && \
